@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Playwright output
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+
+# Claude Code local state
+/.claude/
+
+# Playwright CLI cache
+/.playwright-cli/
+
+# OS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
