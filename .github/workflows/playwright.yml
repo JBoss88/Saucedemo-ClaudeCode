@@ -4,12 +4,14 @@ on:
     branches: [main]
   workflow_dispatch:
 
+# 1. THE FIX: Forces GitHub helpers to use the newest Node.js engine
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   ui-tests:
     runs-on: ubuntu-latest
 
-    # 1. THE MAGIC DOCKER LINE:
-    # This tells GitHub to run everything below inside the official Playwright container
     container:
       image: mcr.microsoft.com/playwright:v1.42.0-jammy
 
@@ -23,8 +25,6 @@ jobs:
       - name: Run Playwright UI tests
         run: npm test
 
-      # 2. THE ARTIFACT SAVER:
-      # This guarantees you get your HTML report even if the tests fail
       - name: Save HTML Report
         uses: actions/upload-artifact@v4
         if: always()
